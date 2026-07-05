@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:51:44 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/05 16:32:13 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/05 16:50:32 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	stack_push(t_stack *s, int value, int rank)
 
 int	stack_pop_value(t_stack *s)
 {
-	int	value;
-	t_node *curr_node;
+	int		value;
+	t_node	*curr_node;
 
 	if (!s|| s->size == 0)
 		return (0);
@@ -61,10 +61,53 @@ int	stack_pop_value(t_stack *s)
 }
 
 int	stack_pop_rank(t_stack *s)
-{}
+{
+	int		rank;
+	t_node	*curr_node;
+
+	if (!s|| s->size == 0)
+		return (0);
+	curr_node = s->top;
+	rank = curr_node->rank;
+	if (s->size == 1)
+	{
+		s->top = NULL;
+		s->bottom = NULL;
+	}
+	else
+	{
+		s->top = curr_node->prev;
+		s->top->prev = NULL;
+	}
+	free(curr_node);
+	s->size--;
+	return (rank);
+}
 
 int	stack_peek_value(t_stack *s)
-{}
+{
+	int		value;
+	t_node	*curr_node;
+
+	if (!s|| s->size == 0)
+		return (0);
+	curr_node = s->top;
+	if (!curr_node)
+		return (0);
+	value = curr_node->value;
+	return (value);
+}
 
 int	stack_peek_rank(t_stack *s)
-{}
+{
+	int		rank;
+	t_node	*curr_node;
+
+	if (!s|| s->size == 0)
+		return (0);
+	curr_node = s->top;
+	if (!curr_node)
+		return (0);
+	rank = curr_node->rank;
+	return (rank);
+}
