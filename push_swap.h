@@ -44,6 +44,43 @@ typedef struct s_bench
 	int		rrr;
 } t_bench;
 
+/*stack.c functions*/
+t_stack	*stack_init(void);
+t_node	*create_node(int value, int rank);
+int		stack_is_empty(t_stack *s);
+t_node	*stack_get_at(t_stack *s, int i);
+void	stack_free(t_stack *s);
+
+/*stack_operations.c*/
+void	stack_push(t_stack *s, int value, int rank);
+int		stack_pop_value(t_stack *s);
+int		stack_pop_rank(t_stack *s);
+int		stack_peek_value(t_stack *s);
+int		stack_peek_rank(t_stack *s);
+
+/*operations.c functions*/
+
+/*normalize.c functions*/
+
+/*disorder.c functions*/
+
+/*sort_simple.c functions*/
+
+/*sort_medium.c functions*/
+
+/*sort_complex.c functions*/
+
+/*sort_adaptive.c functions*/
+
+/*cost.c functions*/
+
+/*utils.c functions*/
+
+/*bench.c functions*/
+
+/*error.c functions*/
+
+
 
 
 
