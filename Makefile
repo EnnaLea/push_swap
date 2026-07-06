@@ -1,23 +1,22 @@
 NAME = pushswap.a
-CC = gcc
+CC = cc
 CLFAGS = -Wall -Wextra -Werror -g
 AR = ar rcs
 RM = rm -f
 
-SRC = const /
-		disorde /
-		main /
-		normalize /
-		operations /
-		push_swap /
-		sort_adaptive /
-		sort_complex /
-		sort_medium /
-		sort_simple /
-		stack_operations /
-		stack /
-		utils /
-
+SRC = cost \
+		disorder \
+		main \
+		normalize \
+		operations \
+		push_swap \
+		sort_adaptive \
+		sort_complex \
+		sort_medium \
+		sort_simple \
+		stack_operations \
+		stack \
+		utils \
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJS = $(addsuffix .o, $(SRC))
