@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:37:43 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/05 18:48:17 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/06 20:03:56 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,9 @@ t_node	*stack_get_at(t_stack *s, int i)
 	t_node	*curr_node;
 	int		j;
 
-	if (i < 0 || i > 0 || i >= s->size)
+	if (!s || i < 0 || i >= s->size)
 		return (NULL);
 	curr_node = s->top;
-	if (!curr_node)
-		return (NULL);
 	j = 0;
 	while (j < i)
 	{
@@ -71,7 +69,8 @@ void	stack_free(t_stack *s)
 	t_node	*next_node;
 
 	if (!s)
-		return;
+		return ;
+	curr_node = s->top;
 	while (curr_node)
 	{
 		next_node = curr_node->next;

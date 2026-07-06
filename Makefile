@@ -1,5 +1,5 @@
-NAME = pushswap.a
-CC = cc
+NAME = libpushswap.a
+CC = gcc
 CLFAGS = -Wall -Wextra -Werror -g
 AR = ar rcs
 RM = rm -f
