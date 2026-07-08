@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test_stack.c                                    :+:      :+:    :+:   */
+/*   test_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:06:28 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/06 20:04:11 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/08 09:38:24 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ int	main(void)
 
 	/* 11. Pop da stack vuoto (dovrebbe restituire 0) */
 	printf("\n11. Pop da b vuoto:\n");
-	value = stack_pop(b, NULL, NULL);
+	value = stack_pop(b, value, rank);
 	printf("   valore restituito: %d (dovrebbe essere 0)\n", value);
 	assert(value == 0);
 

@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/05 19:03:55 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/08 12:43:49 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	stack_free(t_stack *s);
 
 /*stack_operations.c*/
 void	stack_push(t_stack *s, int value, int rank);
-int		stack_pop_value(t_stack *s);
+int		stack_pop(t_stack *s, int *value, int *rank);
 int		stack_pop_rank(t_stack *s);
 int		stack_peek_value(t_stack *s);
 int		stack_peek_rank(t_stack *s);
@@ -73,6 +73,7 @@ int		stack_peek_rank(t_stack *s);
 /*operations.c functions*/
 
 /*normalize.c functions*/
+void	normalize(t_stack *s);
 
 /*disorder.c functions*/
 

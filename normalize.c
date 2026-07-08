@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 15:15:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/06 20:03:19 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/08 13:10:59 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,43 @@ static int	*sort_temp(int *arr, int size)
 
 static int	find_rank(int *sorted, int size, int value)
 {
+	int	left;
+	int	right;
+	int	mid;
 
+	left = 0;
+	right = size - 1;
+	while (left <= right)
+	{
+		mid = (left + right) / 2;
+		if (sorted[mid] == value)
+			return (mid);
+		else if (sorted[mid] < value)
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
+	return (-1);
 }
 
-void	normalize(t_stack *a)
-{}
+void	normalize(t_stack *s)
+{
+	t_node	*curr_node;
+	int		*sorted;
+	int		*temp;
+
+	if (!s || s->size == 0)
+		return ;
+	curr_node = s->top;
+	temp = arr_temp(s);
+	sorted = sort_temp(temp, s->size);
+	free(temp);
+	while (curr_node)
+	{
+		curr_node->rank = find_rank(sorted, s->size, curr_node->value);
+		curr_node = curr_node->next;
+	}
+	free(sorted);
+}
 
 
