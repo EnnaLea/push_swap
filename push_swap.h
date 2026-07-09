@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/09 11:44:25 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/09 16:24:11 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,9 @@ int		stack_peek_rank(t_stack *s);
 /*operations_swap.c functions*/
 void	op_sa(t_stack *a, t_bench *bench);
 void	op_sb(t_stack *b, t_bench *bench);
-void	op_ss(t_stack *a, t_stack *b, t_bench *bench);
+void	op_ss(t_stack *a, t_stack *b,t_bench *bench);
 
 /*operations_push.c*/
-void	op_ss(t_stack *a, t_stack *b, t_bench *bench);
 void	op_pa(t_stack *a, t_stack *b, t_bench *bench);
 void	op_pb(t_stack *a, t_stack *b, t_bench *bench);
 
@@ -111,6 +110,33 @@ void	normalize(t_stack *s);
 
 /*error.c functions*/
 
+/*
+L'errore più comune è iniziare dall'algoritmo più complesso. L'ordine corretto è:
+
+1. Prima `push_swap.h` con la struttura dati
+2. Poi `stack.c` con le operazioni primitive — testale subito stampando la pila
+3. Poi `operations.c` — testa ogni operazione manualmente
+4. Poi `normalize.c` — verifica che i ranghi siano corretti
+5. Poi `disorder.c`
+6. Poi `sort_simple.c` — il più facile, ti dà subito un programma funzionante
+7. Poi `cost.c` — ottimizza il semplice
+8. Poi `sort_medium.c`
+9. Poi `sort_complex.c`
+10. Infine `sort_adaptive.c` che collega tutto
+
+Ogni passo ha qualcosa che funziona e che puoi testare. Non andare avanti finché il passo corrente non è solido.
+*/
+
+
+/* costanti per la strategia */
+# define STRATEGY_SIMPLE    0
+# define STRATEGY_MEDIUM    1
+# define STRATEGY_COMPLEX   2
+# define STRATEGY_ADAPTIVE  3
+
+/* soglie disordine */
+# define DISORDER_LOW       0.2f
+# define DISORDER_MED       0.5f
 
 
 

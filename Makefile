@@ -8,7 +8,9 @@ SRC = cost \
 		disorder \
 		main \
 		normalize \
-		operations \
+		operations_swap \
+		operations_push \
+		operations_rotate \
 		push_swap \
 		sort_adaptive \
 		sort_complex \
