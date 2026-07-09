@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/08 12:43:49 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/09 11:44:25 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,25 @@ int		stack_pop_rank(t_stack *s);
 int		stack_peek_value(t_stack *s);
 int		stack_peek_rank(t_stack *s);
 
-/*operations.c functions*/
+/*operations_swap.c functions*/
+void	op_sa(t_stack *a, t_bench *bench);
+void	op_sb(t_stack *b, t_bench *bench);
+void	op_ss(t_stack *a, t_stack *b, t_bench *bench);
+
+/*operations_push.c*/
+void	op_ss(t_stack *a, t_stack *b, t_bench *bench);
+void	op_pa(t_stack *a, t_stack *b, t_bench *bench);
+void	op_pb(t_stack *a, t_stack *b, t_bench *bench);
+
+/*operations_rotate.c*/
+void	op_ra(t_stack *a, t_bench *bench);
+void	op_rb(t_stack *b, t_bench *bench);
+void	op_rr(t_stack *a, t_stack *b, t_bench *bench);
+
+/*operations_rev_rotate.c*/
+void	op_rra(t_stack *a, t_bench *bench);
+void	op_rrb(t_stack *b, t_bench *bench);
+void	op_rrr(t_stack *a, t_stack *b, t_bench *bench);
 
 /*normalize.c functions*/
 void	normalize(t_stack *s);
