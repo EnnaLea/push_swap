@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:37:25 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/09 17:42:57 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/09 18:55:22 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	op_pa(t_stack *a, t_stack *b, t_bench *bench)
 		bench->total++;
 	}
 }
-
 
 void	op_pb(t_stack *a, t_stack *b, t_bench *bench)
 {

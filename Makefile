@@ -11,6 +11,7 @@ SRC = cost \
 		operations_swap \
 		operations_push \
 		operations_rotate \
+		operations_rev_rotate \
 		push_swap \
 		sort_adaptive \
 		sort_complex \
