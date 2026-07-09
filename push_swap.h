@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/09 16:24:11 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/09 17:51:05 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ Ogni passo ha qualcosa che funziona e che puoi testare. Non andare avanti finch√
 # define STRATEGY_COMPLEX   2
 # define STRATEGY_ADAPTIVE  3
 
-/* soglie disordine */
+/* costanti soglie disordine */
 # define DISORDER_LOW       0.2f
 # define DISORDER_MED       0.5f
 

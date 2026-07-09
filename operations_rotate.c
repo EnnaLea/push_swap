@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations_rotate.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/09 17:46:35 by ealiman           #+#    #+#             */
+/*   Updated: 2026/07/09 18:50:23 by ealiman          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	rotate(t_stack *s)
+{
+	t_node	*old_top;
+	t_node	*new_top;
+	t_node	*old_bottom;
+
+	if (!s || s->size < 2)
+		return (0);
+	old_top = s->top;
+	old_bottom = s->bottom;
+	new_top = s->top->next;
+	new_top->prev = NULL;
+	old_top->next = NULL;
+	old_bottom->next = old_top;
+	old_top->prev = old_bottom;
+	s->top = new_top;
+	s->bottom = old_top;
+	return (1);
+}
+
+void	op_ra(t_stack *a, t_bench *bench)
+{
+	if (!rotate(a))
+		return;
+	write (1, "ra\n", 3);
+	if (bench)
+	{
+		bench->ra++;
+		bench->total++;
+	}
+}
+
+void	op_rb(t_stack *b, t_bench *bench)
+{
+	if (!rotate(b))
+		return;
+	write (1, "rb\n", 3);
+	if (bench)
+	{
+		bench->rb++;
+		bench->total++;
+	}
+}
+
+void	op_rr(t_stack *a, t_stack *b, t_bench *bench)
+{
+	int rotated_a;
+	int	rotated_b;
+
+	rotated_a = rotate(a);
+	rotated_b = rotate(b);
+	if (!rotated_a && !rotated_b)
+		return;
+	write (1, "rr\n", 3);
+	if (bench)
+	{
+		bench->rr++;
+		bench->total++;
+	}
+}
