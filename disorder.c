@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 11:01:55 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/10 13:00:39 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/10 17:04:14 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ float	compute_disorder(t_stack *s)
 		}
 		i++;
 	}
+	free(ranks);
 	if (tot_pairs == 0)
 		return (0.0f);
 	return ((float)mistakes / (float)tot_pairs);
