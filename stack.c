@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:37:43 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/08 09:28:22 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/10 12:03:12 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ t_node	*stack_get_at(t_stack *s, int i)
 	while (j < i)
 	{
 		curr_node = curr_node->next;
-		if(!curr_node)
-			return (NULL);
 		j++;
 	}
 	return (curr_node);

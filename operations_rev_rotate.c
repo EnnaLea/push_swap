@@ -6,13 +6,13 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 18:54:29 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/09 19:23:01 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/09 19:24:48 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rev_rotate(t_stack *s)
+static int	rev_rotate(t_stack *s)
 {
 	t_node	*old_top;
 	t_node	*old_bottom;

@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/09 17:51:05 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/10 11:50:53 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define STRATEGY_MEDIUM	1
 # define STRATEGY_COMPLEX	2
 # define STRATEGY_ADAPTIVE	3
+
+# define DISORDER_LOW       0.2f
+# define DISORDER_MED       0.5f
 
 typedef struct s_node
 {
@@ -93,22 +96,34 @@ void	op_rrr(t_stack *a, t_stack *b, t_bench *bench);
 void	normalize(t_stack *s);
 
 /*disorder.c functions*/
+float	compute_disorder(t_stack *s);
 
 /*sort_simple.c functions*/
+void	sort_simple(t_stack *a, t_stack *b, t_bench *bench);
 
 /*sort_medium.c functions*/
+void	sort_medium(t_stack *a, t_stack *b, t_bench *bench);
 
 /*sort_complex.c functions*/
+void	sort_complex(t_stack *a, t_stack *b, t_bench *bench);
 
 /*sort_adaptive.c functions*/
+void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench);
 
 /*cost.c functions*/
+int		cost_to_top(t_stack *s, t_node *node);
+int		best_move_cost(t_stack *a, t_stack *b);
 
 /*utils.c functions*/
+t_node	*find_min(t_stack *s);
+t_node	*find_max(t_stack *s);
+int		stack_is_sorted(t_stack *s);
 
 /*bench.c functions*/
+void	print_bench(t_bench *bench);
 
 /*error.c functions*/
+void	error_exit(t_stack *a, t_stack *b);
 
 /*
 L'errore più comune è iniziare dall'algoritmo più complesso. L'ordine corretto è:
@@ -126,19 +141,6 @@ L'errore più comune è iniziare dall'algoritmo più complesso. L'ordine corrett
 
 Ogni passo ha qualcosa che funziona e che puoi testare. Non andare avanti finché il passo corrente non è solido.
 */
-
-
-/* costanti per la strategia */
-# define STRATEGY_SIMPLE    0
-# define STRATEGY_MEDIUM    1
-# define STRATEGY_COMPLEX   2
-# define STRATEGY_ADAPTIVE  3
-
-/* costanti soglie disordine */
-# define DISORDER_LOW       0.2f
-# define DISORDER_MED       0.5f
-
-
 
 
 #endif

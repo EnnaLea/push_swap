@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:48:24 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/09 17:31:22 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/10 11:54:43 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,16 @@ void	init_bench(t_bench *bench)
 	bench->rrb = 0;
 	bench->rrr = 0;
 }
+
+/*
+Nel main, la sequenza corretta è:
+
+```
+1. costruisci la lista leggendo argv
+2. valida (duplicati, overflow, caratteri invalidi)
+3. controlla se già ordinata → se sì, esci senza stampare nulla
+4. chiama normalize(a)          ← solo qui
+5. calcola il disordine
+6. esegui l'algoritmo scelto
+```
+*/
