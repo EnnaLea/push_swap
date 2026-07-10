@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/10 16:28:55 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/10 18:22:55 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	normalize(t_stack *s);
 float	compute_disorder(t_stack *s);
 
 /*sort_simple.c functions*/
+void	sort_three(t_stack *s, t_bench *bench);
 void	sort_simple(t_stack *a, t_stack *b, t_bench *bench);
 
 /*sort_medium.c functions*/
