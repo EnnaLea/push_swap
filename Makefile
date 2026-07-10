@@ -19,7 +19,8 @@ SRC = cost \
 		sort_simple \
 		stack_operations \
 		stack \
-		utils \
+		utils_find \
+		utils
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJS = $(addsuffix .o, $(SRC))

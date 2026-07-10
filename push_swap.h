@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/10 11:50:53 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/10 16:04:39 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,11 @@ void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench);
 int		cost_to_top(t_stack *s, t_node *node);
 int		best_move_cost(t_stack *a, t_stack *b);
 
-/*utils.c functions*/
+/*utils_find.c functions*/
 t_node	*find_min(t_stack *s);
 t_node	*find_max(t_stack *s);
+
+/*utils.c functions*/
 int		stack_is_sorted(t_stack *s);
 
 /*bench.c functions*/
