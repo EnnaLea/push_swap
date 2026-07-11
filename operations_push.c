@@ -6,17 +6,17 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:37:25 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/09 18:55:22 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/11 17:33:08 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_stack *src, t_stack *dest)
+static int	push(t_stack *src, t_stack *dest)
 {
 	t_node	*node;
 	if (!src || !dest || src->size == 0)
-		return ;
+		return (0);
 	node = src->top;
 	src->top = src->top->next;
 	if (src->top)
@@ -32,26 +32,31 @@ static void	push(t_stack *src, t_stack *dest)
 		dest->bottom = node;
 	dest->top = node;
 	dest->size++;
+	return (1);
 }
 
 void	op_pa(t_stack *a, t_stack *b, t_bench *bench)
 {
-	push(b, a);
-	write (1, "pa\n", 3);
-	if (bench)
+	if (push(b, a))
 	{
-		bench->pa++;
-		bench->total++;
+		write (1, "pa\n", 3);
+		if (bench && bench->enabled)
+		{
+			bench->pa++;
+			bench->total++;
+		}
 	}
 }
 
 void	op_pb(t_stack *a, t_stack *b, t_bench *bench)
 {
-	push(a, b);
-	write (1, "pb\n", 3);
-	if (bench)
+	if(push(a, b))
 	{
-		bench->pb++;
-		bench->total++;
+		write (1, "pb\n", 3);
+		if (bench && bench->enabled)
+		{
+			bench->pb++;
+			bench->total++;
+		}
 	}
 }

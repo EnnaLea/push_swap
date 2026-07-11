@@ -6,12 +6,11 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 11:01:55 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/10 17:04:14 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/11 21:49:40 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	*array(t_stack *s)
 {
@@ -20,21 +19,18 @@ static int	*array(t_stack *s)
 	int		i;
 
 	if (!s || s->size < 2)
-		return (0);
+		return (NULL);
 	node = s->top;
-	printf("Array estratto: ");
+	ranks = malloc((s->size + 1) * sizeof(int));
 	if (!ranks)
 		return (NULL);
 	i = 0;
-	ranks = malloc((s->size + 1) * sizeof(int));
 	while (node)
 	{
 		ranks[i] = node->rank;
-				printf("%d ", ranks[i]);
 		node = node->next;
 		i++;
 	}
-	printf("\n");
 	return (ranks);
 }
 

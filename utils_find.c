@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 16:01:51 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/10 16:13:03 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/11 21:45:02 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_node	*find_min(t_stack *s)
 	t_node	*curr_node;
 	t_node	*min_node;
 
-	if (!s || s->size < 2)
+	if (!s || s->size == 0)
 		return (NULL);
 	curr_node = s->top;
 	min_node = s->top;
@@ -35,7 +35,7 @@ t_node	*find_max(t_stack *s)
 	t_node	*curr_node;
 	t_node	*max_node;
 
-	if (!s || s->size < 2)
+	if (!s || s->size == 0)
 		return (NULL);
 	curr_node = s->top;
 	max_node = s->top;

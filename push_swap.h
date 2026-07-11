@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/10 18:22:55 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/11 17:37:59 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,18 @@ void	sort_complex(t_stack *a, t_stack *b, t_bench *bench);
 void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench);
 
 /*cost.c functions*/
-int		cost_to_top(t_stack *s, t_node *node);
-int		best_move_cost(t_stack *a, t_stack *b);
+// int		cost_to_top(t_stack *s, t_node *node);
+// int		best_move_cost(t_stack *a, t_stack *b);
+
+/*bench.c*/
+void	init_bench(t_bench *bench);
+void	print_bench(t_bench *bench);
+
+/*push_swap.c*/
+void	error_exit(t_stack *a, t_stack *b, t_bench *bench);
+int		parse_flags(int argc, char **argv, t_bench *bench);
+void	run_sort(t_stack *a, t_stack *b, t_bench *bench);
+int		push_swap(int argc, char **argv);
 
 /*utils_find.c functions*/
 t_node	*find_min(t_stack *s);
@@ -126,11 +136,21 @@ int		direction(t_stack *s, t_node *node);
 void	rotate_to_top(t_stack *s, t_node *node, t_bench *bench, char stack);
 int		stack_is_sorted(t_stack *s);
 
-/*bench.c functions*/
-void	print_bench(t_bench *bench);
+/*utils_write.c*/
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *str, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_put_float_percent_fd(float n, int fd);
+int		ft_strcmp(const char *s1, const char *s2);
+
+/*utils_parsing.c*/
+int		is_number(char *str);
+int		ft_atoi_safe(char *str, int *error);
+int		has_duplicates(t_stack *s);
+
 
 /*error.c functions*/
-void	error_exit(t_stack *a, t_stack *b);
+
 
 /*
 L'errore più comune è iniziare dall'algoritmo più complesso. L'ordine corretto è:

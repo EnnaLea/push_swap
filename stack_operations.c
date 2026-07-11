@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:51:44 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/06 20:03:45 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/11 20:04:13 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	stack_pop_rank(t_stack *s)
 	}
 	else
 	{
-		s->top = curr_node->prev;
+		s->top = curr_node->next;
 		s->top->prev = NULL;
 	}
 	free(curr_node);

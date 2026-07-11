@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 18:54:29 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/09 19:24:48 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/11 17:57:19 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,27 @@ static int	rev_rotate(t_stack *s)
 
 void	op_rra(t_stack *a, t_bench *bench)
 {
-	if (!rev_rotate(a))
-		return ;
-	write (1, "rra\n", 4);
-	if (bench)
+	if (rev_rotate(a))
 	{
-		bench->rra++;
-		bench->total++;
+		write (1, "rra\n", 4);
+		if (bench && bench->enabled)
+		{
+			bench->rra++;
+			bench->total++;
+		}
 	}
 }
 
 void	op_rrb(t_stack *b, t_bench *bench)
 {
-	if (!rev_rotate(b))
-		return ;
-	write (1, "rrb\n", 4);
-	if (bench)
+	if (rev_rotate(b))
 	{
-		bench->rrb++;
-		bench->total++;
+		write (1, "rrb\n", 4);
+		if (bench && bench->enabled)
+		{
+			bench->rrb++;
+			bench->total++;
+		}
 	}
 }
 
@@ -63,13 +65,13 @@ void	op_rrr(t_stack *a, t_stack *b, t_bench *bench)
 
 	rev_rot_a = rev_rotate(a);
 	rev_rot_b = rev_rotate(b);
-	if (!rev_rot_a && !rev_rot_b)
-		return;
-	write (1, "rrr\n", 4);
-	if (bench)
+	if (rev_rot_a && rev_rot_b)
 	{
-		bench->rrr++;
-		bench->total++;
+		write (1, "rrr\n", 4);
+		if (bench && bench->enabled)
+		{
+			bench->rrr++;
+			bench->total++;
+		}
 	}
-
 }
