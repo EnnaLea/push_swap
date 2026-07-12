@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 18:27:52 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 22:58:13 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:46:30 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	radix_pass(t_stack *a, t_stack *b, int bit, t_bench *bench)
 	i = 0;
 	while (i < size)
 	{
-		if (((a->top->rank >> bit) & 1) == 1)
+		if (((a->top->rank >> bit) & 1) == 0)
 			op_pb(a, b, bench);
 		else
 			op_ra(a, bench);
