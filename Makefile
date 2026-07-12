@@ -23,6 +23,7 @@ SRC = cost \
 		utils	\
 		utils_write \
 		utils_parsing \
+		utils_push_swap \
 		bench \
 
 SRC_MAIN = main.c

@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 17:37:59 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 10:20:36 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,12 @@ int		ft_strcmp(const char *s1, const char *s2);
 int		is_number(char *str);
 int		ft_atoi_safe(char *str, int *error);
 int		has_duplicates(t_stack *s);
+
+/*utils_push_swap.c*/
+void	free_and_return(t_stack *a, t_stack *b);
+void	parse_and_fill_stack(int argc, char **argv, t_stack *a, t_bench *bench);
+void	validate_and_prepare(t_stack *a, t_bench *bench);
+void	execute_sort(t_stack *a, t_stack *b, t_bench *bench);
 
 
 /*error.c functions*/

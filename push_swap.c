@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 19:27:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 20:06:51 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 10:21:00 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,7 @@ void	run_sort(t_stack *a, t_stack *b, t_bench *bench)
 	else if (bench->strategy == STRATEGY_COMPLEX)
 		sort_complex(a, b, bench);
 	else
-	{
 		sort_adaptive(a, b, bench);
-	}
 }
 
 int push_swap(int argc, char **argv)
@@ -87,43 +85,13 @@ int push_swap(int argc, char **argv)
 	if (!a || !b)
 		error_exit(a, b, &bench);
 	if (argc == 1)
-	{
-		stack_free(a);
-		stack_free(b);
-		return (0);
-	}
-	num_start = parse_flags(argc, argv, &bench);
-	if (num_start >= argc)
-	{
-		stack_free(a);
-		stack_free(b);
-		return (0);
-	}
-	i = argc - 1;
-	while (i >= num_start)
-	{
-		if (!is_number(argv[i]))
-			error_exit(a, b, &bench);
-		error = 0;
-		value = ft_atoi_safe(argv[i], &error);
-		if (error)
-			error_exit(a, b, &bench);
-		stack_push(a, value, 0);
-		i--;
-	}
-	if (has_duplicates(a))
-		error_exit(a, b, &bench);
-	normalize(a);
-	if (stack_is_sorted(a))
-	{
-		stack_free(a);
-		stack_free(b);
-		return (0);
-	}
-	bench.disorder = compute_disorder(a);
-	run_sort(a, b, &bench);
-	if (bench.enabled)
-		print_bench(&bench);
+		free_and_return(a, b);
+	//trasformare in funzione helper
+	parse_and_fill_stack(argc, argv, a, &bench);
+	if (a->size == 0)
+		free_and_return(a, b);
+	validate_and_prepare(a, &bench);
+	execute_sort(a, b, &bench);
 	stack_free(a);
 	stack_free(b);
 	return (0);
