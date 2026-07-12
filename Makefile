@@ -5,8 +5,7 @@ CLFAGS = -Wall -Wextra -Werror -g
 AR = ar rcs
 RM = rm -f
 
-SRC = cost \
-		disorder \
+SRC = disorder \
 		normalize \
 		operations_swap \
 		operations_push \
@@ -24,6 +23,7 @@ SRC = cost \
 		utils_write \
 		utils_parsing \
 		utils_push_swap \
+		utils_simple \
 		bench \
 
 SRC_MAIN = main.c

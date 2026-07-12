@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 16:18:27 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/10 17:33:14 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 12:43:24 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ int		cost_to_top(t_stack *s, t_node *node)
 	int	position;
 	int	size;
 
-	if (!s || s->size < 2 || !node)
+	if (!s || s->size == 0 || !node)
 		return (-1);
+	if (s->size == 1)
+		return (0);
 	size = s->size;
 	position = position_of(s, node);
 	if (position == -1)
 		return (-1);
-	//rotazioni ra
 	if (position <= (size / 2))
 		return (position);
-	//rotazioni rra
 	return (size - position);
 }
 
@@ -53,15 +53,15 @@ int		direction(t_stack *s, t_node *node)
 {
 	int	position;
 
-	if (!s || s->size < 2 || !node)
+	if (!s || s->size == 0 || !node)
+		return (-1);
+	if (s->size == 1)
 		return (0);
 	position = position_of(s, node);
 	if (position == -1)
 		return (0);
 	if (position <= (s->size / 2))
-	//vai avanti: usa ra
 		return (1);
-	//vai indietro: usa rra
 	return (-1);
 
 }

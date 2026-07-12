@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 10:20:36 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 13:53:27 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,6 @@ void	sort_complex(t_stack *a, t_stack *b, t_bench *bench);
 /*sort_adaptive.c functions*/
 void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench);
 
-/*cost.c functions*/
-// int		cost_to_top(t_stack *s, t_node *node);
-// int		best_move_cost(t_stack *a, t_stack *b);
-
 /*bench.c*/
 void	init_bench(t_bench *bench);
 void	print_bench(t_bench *bench);
@@ -125,16 +121,16 @@ int		parse_flags(int argc, char **argv, t_bench *bench);
 void	run_sort(t_stack *a, t_stack *b, t_bench *bench);
 int		push_swap(int argc, char **argv);
 
-/*utils_find.c functions*/
-t_node	*find_min(t_stack *s);
-t_node	*find_max(t_stack *s);
-
-/*utils.c functions*/
+/*utils.c*/
 int		position_of(t_stack *s, t_node *target);
 int		cost_to_top(t_stack *s, t_node *node);
 int		direction(t_stack *s, t_node *node);
 void	rotate_to_top(t_stack *s, t_node *node, t_bench *bench, char stack);
 int		stack_is_sorted(t_stack *s);
+
+/*utils_find.c functions*/
+t_node	*find_min(t_stack *s);
+t_node	*find_max(t_stack *s);
 
 /*utils_write.c*/
 void	ft_putchar_fd(char c, int fd);
@@ -148,10 +144,18 @@ int		is_number(char *str);
 int		ft_atoi_safe(char *str, int *error);
 int		has_duplicates(t_stack *s);
 
+/*utils_simple.c*/
+t_node	*find_target_in_b(t_stack *b, int rank);
+int		ft_max(int a, int b);
+int		calc_cost(t_stack *a, t_stack *b, t_node *node);
+t_node	*find_cheapest(t_stack *a, t_stack *b);
+void	execute_move(t_stack *a, t_stack *b, t_node *node, t_bench *bench);
+void	push_back_to_a(t_stack *a, t_stack *b, t_bench *bench);
+
 /*utils_push_swap.c*/
 void	free_and_return(t_stack *a, t_stack *b);
 void	parse_and_fill_stack(int argc, char **argv, t_stack *a, t_bench *bench);
-void	validate_and_prepare(t_stack *a, t_bench *bench);
+void	validate_and_prepare(t_stack *a, t_stack *b, t_bench *bench);
 void	execute_sort(t_stack *a, t_stack *b, t_bench *bench);
 
 

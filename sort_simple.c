@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 15:50:02 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 21:43:55 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 15:27:51 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,42 @@ void	sort_three(t_stack *s, t_bench *bench)
 	top = s->top->rank;
 	mid = s->top->next->rank;
 	bot = s->top->next->next->rank;
-	//[0,2,1]
-	if (top < mid && mid > bot && top < bot)
-	{
+	if (top > mid && mid < bot && top < bot)
 		op_sa(s, bench);
-		op_ra(s, bench);
-	}
-	//[2,1,0]
-	else if (top > mid && mid > bot && mid < top)
-	{
-		op_sa(s, bench);
-		op_ra(s, bench);
-	}
-	//[1, 0, 2]
-	else if (top > mid && mid < bot && top < bot)
-		op_sa(s, bench);
-	//[2,0,1]
 	else if (top > mid && mid < bot && top > bot)
 		op_ra(s, bench);
-	//[1, 2, 0]
-	else if (top < mid && mid > bot && bot < top)
+	else if (top < mid && mid > bot && top > bot)
 		op_rra(s, bench);
+	else if (top > mid && mid > bot)
+	{
+		op_sa(s, bench);
+		op_rra(s, bench);
+	}
+	else if (top < mid && mid > bot && bot > top)
+	{
+		op_rra(s, bench);
+		op_sa(s, bench);
+	}
 }
 
 void	sort_simple(t_stack *a, t_stack *b, t_bench *bench)
 {
+	t_node	*min;
+	int		count;
 
+	if (a->size <= 3)
+	{
+		sort_three(a, bench);
+		return ;
+	}
+	count = a->size - 3;
+	while (count--)
+	{
+		min = find_min(a);
+		rotate_to_top(a, min, bench, 'a');
+		op_pb(a, b, bench);
+	}
+	sort_three(a, bench);
+	while (b->size > 0)
+		op_pa(a, b, bench);
 }

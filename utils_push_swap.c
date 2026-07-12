@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 21:59:26 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 10:22:13 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 14:42:15 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	free_and_return(t_stack *a, t_stack *b)
 {
 	stack_free(a);
 	stack_free(b);
-	return ;
 }
 
 void	parse_and_fill_stack(int argc, char **argv, t_stack *a,t_bench *bench)
@@ -26,7 +25,6 @@ void	parse_and_fill_stack(int argc, char **argv, t_stack *a,t_bench *bench)
 	int	error;
 	int	i;
 
-	init_bench(bench);
 	num_start = parse_flags(argc, argv, bench);
 	if (num_start >= argc)
 		return ;
@@ -44,7 +42,7 @@ void	parse_and_fill_stack(int argc, char **argv, t_stack *a,t_bench *bench)
 	}
 }
 
-void	validate_and_prepare(t_stack *a, t_bench *bench)
+void	validate_and_prepare(t_stack *a, t_stack *b, t_bench *bench)
 {
 	if (has_duplicates(a))
 		error_exit(a, NULL, bench);
@@ -52,6 +50,7 @@ void	validate_and_prepare(t_stack *a, t_bench *bench)
 	if (stack_is_sorted(a))
 	{
 		stack_free(a);
+		stack_free(b);
 		exit(0);
 	}
 	bench->disorder = compute_disorder(a);
