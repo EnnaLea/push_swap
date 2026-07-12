@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/12 16:13:24 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 18:06:43 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:07:08 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	cal_chunk_size(int n)
 	size = 1;
 	while (size * size < n)
 		size++;
-	return(size);
+	return (size);
 }
 
 int	is_node_in_chunk(t_node *node, int chunk, int chunk_size, int n)
@@ -34,17 +34,17 @@ int	is_node_in_chunk(t_node *node, int chunk, int chunk_size, int n)
 	return (node->rank >= c_min && node->rank <= c_max);
 }
 
-void	process_chunk(t_stack *a, t_stack *b, t_bench *bench,
-	int chunk, int chunk_size, int n, int el_in_chunk)
+void	process_chunk(t_stack *a, t_stack *b,
+	t_bench *bench, t_chunk_info *info)
 {
 	int	pushed;
 	int	scanned;
 
 	pushed = 0;
 	scanned = 0;
-	while (pushed < el_in_chunk)
+	while (pushed < info->el_in_chunk)
 	{
-		if (is_node_in_chunk(a->top, chunk, chunk_size, n))
+		if (is_node_in_chunk(a->top, info->chunk, info->chunk_size, info->n))
 		{
 			if (b->size > 1 && b->top->rank < b->top->next->rank)
 				op_rb(b, bench);
@@ -64,29 +64,28 @@ void	process_chunk(t_stack *a, t_stack *b, t_bench *bench,
 
 void	push_chunks_to_b(t_stack *a, t_stack *b, t_bench *bench)
 {
-	int	n;
-	int	chunk_size;
-	int	num_chunks;
-	int	chunk;
-	int	el_in_chunk;
+	t_chunk_info	info;
+	int				chunk;
+	int				num_chunks;
 
 	if (!a || !b)
 		return ;
-	n = a->size;
-	chunk_size = cal_chunk_size(n);
-	num_chunks = (n + chunk_size - 1) / chunk_size;
+	info.n = a->size;
+	info.chunk_size = cal_chunk_size(info.n);
+	num_chunks = (info.n + info.chunk_size - 1) / info.chunk_size;
 	chunk = 0;
 	while (chunk < num_chunks)
 	{
-		el_in_chunk = chunk_size;
-		if (chunk == num_chunks - 1 && chunk_size != 0)
-			el_in_chunk = n % chunk_size;
-		process_chunk(a, b, bench, chunk, chunk_size, n, el_in_chunk);
+		info.chunk = chunk;
+		info.el_in_chunk = info.chunk_size;
+		if (chunk == num_chunks - 1 && info.chunk_size != 0)
+			info.el_in_chunk = info.n % info.chunk_size;
+		process_chunk(a, b, bench, &info);
 		chunk++;
 	}
 }
 
-void    push_sorted_to_a(t_stack *a, t_stack *b, t_bench *bench)
+void	push_sorted_to_a(t_stack *a, t_stack *b, t_bench *bench)
 {
 	t_node	*max_node;
 

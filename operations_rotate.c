@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 17:46:35 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 17:55:39 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:30:47 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	op_ra(t_stack *a, t_bench *bench)
 			bench->total++;
 		}
 	}
-
 }
 
 void	op_rb(t_stack *b, t_bench *bench)
@@ -57,12 +56,11 @@ void	op_rb(t_stack *b, t_bench *bench)
 			bench->total++;
 		}
 	}
-
 }
 
 void	op_rr(t_stack *a, t_stack *b, t_bench *bench)
 {
-	int rotated_a;
+	int	rotated_a;
 	int	rotated_b;
 
 	rotated_a = rotate(a);
@@ -76,5 +74,29 @@ void	op_rr(t_stack *a, t_stack *b, t_bench *bench)
 			bench->total++;
 		}
 	}
+}
 
+void	rotate_direction(t_stack *s, t_node *node, t_bench *bench,
+	t_rotate_info *info)
+{
+	if (info->forward)
+	{
+		while (s->top != node)
+		{
+			if (info->stack == 'a')
+				op_ra(s, bench);
+			else
+				op_rb(s, bench);
+		}
+	}
+	else
+	{
+		while (s->top != node)
+		{
+			if (info->stack == 'a')
+				op_rra(s, bench);
+			else
+				op_rrb(s, bench);
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 19:27:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 15:20:47 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 22:51:34 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	error_exit(t_stack *a, t_stack *b, t_bench *bench)
 
 int	parse_flags(int argc, char **argv, t_bench *bench)
 {
-	int i = 1;
+	int	i;
+
+	i = 1;
 	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
 	{
 		if (ft_strcmp(argv[i], "--bench") == 0)
@@ -69,15 +71,33 @@ void	run_sort(t_stack *a, t_stack *b, t_bench *bench)
 		sort_adaptive(a, b, bench);
 }
 
-int push_swap(int argc, char **argv)
+static void	process_stack(t_stack *a, t_stack *b,
+	t_bench *bench, t_cmd_args *cmd)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_bench	bench;
-	int		num_start;
-	int		value;
-	int		error;
-	int		i;
+	parse_and_fill_stack(cmd->argc, cmd->argv, a, bench);
+	if (a->size == 0)
+	{
+		free_and_return(a, b);
+		return ;
+	}
+	if (has_duplicates(a))
+		error_exit(a, b, bench);
+	normalize(a);
+	if (stack_is_sorted(a))
+	{
+		free_and_return(a, b);
+		return ;
+	}
+	bench->disorder = compute_disorder(a);
+	execute_sort(a, b, bench);
+}
+
+int	push_swap(int argc, char **argv)
+{
+	t_stack		*a;
+	t_stack		*b;
+	t_bench		bench;
+	t_cmd_args	cmd;
 
 	init_bench(&bench);
 	a = stack_init();
@@ -89,27 +109,10 @@ int push_swap(int argc, char **argv)
 		free_and_return(a, b);
 		return (0);
 	}
-    parse_and_fill_stack(argc, argv, a, &bench);
-    if (a->size == 0)
-    {
-        free_and_return(a, b);
-        return (0);
-    }
-    if (has_duplicates(a))
-        error_exit(a, b, &bench);
-    normalize(a);
-    if (stack_is_sorted(a))
-    {
-        free_and_return(a, b);
-        return (0);
-    }
-    bench.disorder = compute_disorder(a);
-    execute_sort(a, b, &bench);
-    stack_free(a);
-    stack_free(b);
-    return (0);
+	cmd.argc = argc;
+	cmd.argv = argv;
+	process_stack(a, b, &bench, &cmd);
+	stack_free(a);
+	stack_free(b);
+	return (0);
 }
-
-
-
-

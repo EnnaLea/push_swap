@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 16:18:27 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 12:43:24 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:36:51 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	position_of(t_stack *s, t_node *target)
 	return (-1);
 }
 
-int		cost_to_top(t_stack *s, t_node *node)
+int	cost_to_top(t_stack *s, t_node *node)
 {
 	int	position;
 	int	size;
@@ -49,7 +49,7 @@ int		cost_to_top(t_stack *s, t_node *node)
 	return (size - position);
 }
 
-int		direction(t_stack *s, t_node *node)
+int	direction(t_stack *s, t_node *node)
 {
 	int	position;
 
@@ -63,43 +63,24 @@ int		direction(t_stack *s, t_node *node)
 	if (position <= (s->size / 2))
 		return (1);
 	return (-1);
-
 }
 
 void	rotate_to_top(t_stack *s, t_node *node, t_bench *bench, char stack)
 {
-	int	size;
-	int position;
+	int				position;
+	t_rotate_info	info;
 
 	if (!s || s->size < 2 || !node)
 		return ;
 	position = position_of(s, node);
 	if (position == -1)
 		return ;
-	size = s->size;
-	if (position <= (size / 2))
-	{
-		while (s->top != node)
-		{
-			if (stack == 'a')
-				op_ra(s, bench);
-			else
-				op_rb(s, bench);
-		}
-	}
-	else
-	{
-		while (s->top != node)
-		{
-			if (stack == 'a')
-				op_rra(s, bench);
-			else
-				op_rrb(s, bench);
-		}
-	}
+	info.stack = stack;
+	info.forward = (position <= (s->size / 2));
+	rotate_direction(s, node, bench, &info);
 }
 
-int		stack_is_sorted(t_stack *s)
+int	stack_is_sorted(t_stack *s)
 {
 	t_node	*curr_node;
 

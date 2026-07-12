@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:51:44 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 20:04:13 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:00:17 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	stack_pop(t_stack *s, int *value, int *rank)
 {
 	t_node	*curr_node;
 
-	if (!s|| s->size == 0)
+	if (!s || s->size == 0)
 		return (0);
 	curr_node = s->top;
 	if (value)
@@ -62,7 +62,7 @@ int	stack_pop_rank(t_stack *s)
 	int		rank;
 	t_node	*curr_node;
 
-	if (!s|| s->size == 0)
+	if (!s || s->size == 0)
 		return (0);
 	curr_node = s->top;
 	rank = curr_node->rank;
@@ -86,7 +86,7 @@ int	stack_peek_value(t_stack *s)
 	int		value;
 	t_node	*curr_node;
 
-	if (!s|| s->size == 0)
+	if (!s || s->size == 0)
 		return (0);
 	curr_node = s->top;
 	if (!curr_node)
@@ -100,7 +100,7 @@ int	stack_peek_rank(t_stack *s)
 	int		rank;
 	t_node	*curr_node;
 
-	if (!s|| s->size == 0)
+	if (!s || s->size == 0)
 		return (0);
 	curr_node = s->top;
 	if (!curr_node)

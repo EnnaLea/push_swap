@@ -6,11 +6,11 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 17:59:04 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:43:32 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
@@ -31,19 +31,19 @@ typedef struct s_node
 	int				rank;
 	struct s_node	*next;
 	struct s_node	*prev;
-} t_node;
+}	t_node;
 
 typedef struct s_stack
 {
 	t_node	*top;
 	t_node	*bottom;
 	int		size;
-} t_stack;
+}	t_stack;
 
 typedef struct s_bench
 {
-	int	enabled;
-	int	strategy;
+	int		enabled;
+	int		strategy;
 	float	disorder;
 	int		total;
 	int		sa;
@@ -57,7 +57,27 @@ typedef struct s_bench
 	int		rra;
 	int		rrb;
 	int		rrr;
-} t_bench;
+}	t_bench;
+
+typedef struct s_chunk_info
+{
+	int	chunk;
+	int	chunk_size;
+	int	n;
+	int	el_in_chunk;
+}	t_chunk_info;
+
+typedef struct s_cmd_args
+{
+	int		argc;
+	char	**argv;
+}	t_cmd_args;
+
+typedef struct s_rotate_info
+{
+	char	stack;
+	int		forward;
+}	t_rotate_info;
 
 /*stack.c functions*/
 t_stack	*stack_init(void);
@@ -76,7 +96,7 @@ int		stack_peek_rank(t_stack *s);
 /*operations_swap.c functions*/
 void	op_sa(t_stack *a, t_bench *bench);
 void	op_sb(t_stack *b, t_bench *bench);
-void	op_ss(t_stack *a, t_stack *b,t_bench *bench);
+void	op_ss(t_stack *a, t_stack *b, t_bench *bench);
 
 /*operations_push.c*/
 void	op_pa(t_stack *a, t_stack *b, t_bench *bench);
@@ -86,6 +106,8 @@ void	op_pb(t_stack *a, t_stack *b, t_bench *bench);
 void	op_ra(t_stack *a, t_bench *bench);
 void	op_rb(t_stack *b, t_bench *bench);
 void	op_rr(t_stack *a, t_stack *b, t_bench *bench);
+void	rotate_direction(t_stack *s, t_node *node, t_bench *bench,
+			t_rotate_info *info);
 
 /*operations_rev_rotate.c*/
 void	op_rra(t_stack *a, t_bench *bench);
@@ -131,6 +153,7 @@ int		stack_is_sorted(t_stack *s);
 /*utils_find.c functions*/
 t_node	*find_min(t_stack *s);
 t_node	*find_max(t_stack *s);
+t_node	*find_target_in_b(t_stack *b, int rank);
 
 /*utils_write.c*/
 void	ft_putchar_fd(char c, int fd);
@@ -145,7 +168,6 @@ int		ft_atoi_safe(char *str, int *error);
 int		has_duplicates(t_stack *s);
 
 /*utils_simple.c*/
-t_node	*find_target_in_b(t_stack *b, int rank);
 int		ft_max(int a, int b);
 int		calc_cost(t_stack *a, t_stack *b, t_node *node);
 t_node	*find_cheapest(t_stack *a, t_stack *b);
@@ -155,8 +177,8 @@ void	push_back_to_a(t_stack *a, t_stack *b, t_bench *bench);
 /*utils_medium.c*/
 int		cal_chunk_size(int n);
 int		is_node_in_chunk(t_node *node, int chunk, int chunk_size, int n);
-void	process_chunk(t_stack *a, t_stack *b, t_bench *bench,
-	int chunk, int chunk_size, int n, int el_in_chunk);
+void	process_chunk(t_stack *a, t_stack *b,
+			t_bench *bench, t_chunk_info *info);
 void	push_chunks_to_b(t_stack *a, t_stack *b, t_bench *bench);
 void	push_sorted_to_a(t_stack *a, t_stack *b, t_bench *bench);
 
@@ -165,27 +187,5 @@ void	free_and_return(t_stack *a, t_stack *b);
 void	parse_and_fill_stack(int argc, char **argv, t_stack *a, t_bench *bench);
 void	validate_and_prepare(t_stack *a, t_stack *b, t_bench *bench);
 void	execute_sort(t_stack *a, t_stack *b, t_bench *bench);
-
-
-/*error.c functions*/
-
-
-/*
-L'errore più comune è iniziare dall'algoritmo più complesso. L'ordine corretto è:
-
-1. Prima `push_swap.h` con la struttura dati
-2. Poi `stack.c` con le operazioni primitive — testale subito stampando la pila
-3. Poi `operations.c` — testa ogni operazione manualmente
-4. Poi `normalize.c` — verifica che i ranghi siano corretti
-5. Poi `disorder.c`
-6. Poi `sort_simple.c` — il più facile, ti dà subito un programma funzionante
-7. Poi `cost.c` — ottimizza il semplice
-8. Poi `sort_medium.c`
-9. Poi `sort_complex.c`
-10. Infine `sort_adaptive.c` che collega tutto
-
-Ogni passo ha qualcosa che funziona e che puoi testare. Non andare avanti finché il passo corrente non è solido.
-*/
-
 
 #endif

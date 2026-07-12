@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:37:25 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 17:33:08 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 22:25:27 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	push(t_stack *src, t_stack *dest)
 {
 	t_node	*node;
+
 	if (!src || !dest || src->size == 0)
 		return (0);
 	node = src->top;
@@ -50,7 +51,7 @@ void	op_pa(t_stack *a, t_stack *b, t_bench *bench)
 
 void	op_pb(t_stack *a, t_stack *b, t_bench *bench)
 {
-	if(push(a, b))
+	if (push(a, b))
 	{
 		write (1, "pb\n", 3);
 		if (bench && bench->enabled)

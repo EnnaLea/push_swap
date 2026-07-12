@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 12:01:49 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 12:12:51 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:41:10 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,4 @@ void	init_bench(t_bench *bench)
 
 void	print_bench(t_bench *bench)
 {
-
 }

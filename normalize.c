@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 15:15:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/08 13:10:59 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 22:23:59 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	*arr_temp(t_stack *s)
 {
-	int	*temp;
+	int		*temp;
 	t_node	*curr_node;
 	int		i;
 
@@ -33,21 +33,12 @@ static int	*arr_temp(t_stack *s)
 	return (temp);
 }
 
-static int	*sort_temp(int *arr, int size)
+static void	sort_array(int *ord_arr, int size)
 {
 	int	i;
-	int j;
-	int	*ord_arr;
+	int	j;
 	int	temp;
 
-	if (!arr)
-		return (NULL);
-	ord_arr = malloc((size + 1) * sizeof(int));
-	if (!ord_arr)
-		return (NULL);
-	i = -1;
-	while (++i < size)
-		ord_arr[i] = arr[i];
 	i = -1;
 	while (++i < size - 1)
 	{
@@ -62,6 +53,22 @@ static int	*sort_temp(int *arr, int size)
 			}
 		}
 	}
+}
+
+static int	*sort_temp(int *arr, int size)
+{
+	int	*ord_arr;
+	int	i;
+
+	if (!arr)
+		return (NULL);
+	ord_arr = malloc((size + 1) * sizeof(int));
+	if (!ord_arr)
+		return (NULL);
+	i = -1;
+	while (++i < size)
+		ord_arr[i] = arr[i];
+	sort_array(ord_arr, size);
 	return (ord_arr);
 }
 
@@ -105,5 +112,3 @@ void	normalize(t_stack *s)
 	}
 	free(sorted);
 }
-
-

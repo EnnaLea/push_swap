@@ -6,36 +6,11 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/12 10:56:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 15:27:23 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:20:18 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_node	*find_target_in_b(t_stack *b, int rank)
-{
-	t_node	*curr_node;
-	t_node	*target_node;
-	int		right_rank;
-
-	if (!b || b->size == 0)
-		return (NULL);
-	curr_node = b->top;
-	target_node = NULL;
-	right_rank = -1;
-	while (curr_node)
-	{
-		if (curr_node->rank < rank &&  curr_node->rank > right_rank)
-		{
-			right_rank = curr_node->rank;
-			target_node = curr_node;
-		}
-		curr_node = curr_node->next;
-	}
-	if (!target_node)
-		target_node = find_max(b);
-	return (target_node);
-}
 
 int	ft_max(int a, int b)
 {
@@ -44,7 +19,7 @@ int	ft_max(int a, int b)
 	return (b);
 }
 
-int		calc_cost(t_stack *a, t_stack *b, t_node *node)
+int	calc_cost(t_stack *a, t_stack *b, t_node *node)
 {
 	t_node	*target_node;
 	int		cost_a;
@@ -75,7 +50,6 @@ t_node	*find_cheapest(t_stack *a, t_stack *b)
 	curr_node = a->top;
 	cheapest = NULL;
 	min_cost = INT_MAX;
-
 	while (curr_node)
 	{
 		cost = calc_cost(a, b, curr_node);

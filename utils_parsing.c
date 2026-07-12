@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 13:12:51 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 18:24:21 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:16:58 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	is_number(char *str)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (str[i] == '\0')
-    	return (0);
+		return (0);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
@@ -48,8 +48,7 @@ int	ft_atoi_safe(char *str, int *error)
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str - '0');
-		if ((sign == 1 && num > INT_MAX) ||
-		(sign == -1 && -num < INT_MIN))
+		if ((sign == 1 && num > INT_MAX) || (sign == -1 && (-num) < INT_MIN))
 		{
 			*error = 1;
 			return (0);
@@ -78,5 +77,3 @@ int	has_duplicates(t_stack *s)
 	}
 	return (0);
 }
-
-

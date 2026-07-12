@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 18:54:29 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 17:57:19 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 22:26:16 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	op_rrb(t_stack *b, t_bench *bench)
 
 void	op_rrr(t_stack *a, t_stack *b, t_bench *bench)
 {
-	int rev_rot_a;
+	int	rev_rot_a;
 	int	rev_rot_b;
 
 	rev_rot_a = rev_rotate(a);

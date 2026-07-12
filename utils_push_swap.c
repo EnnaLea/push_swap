@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 21:59:26 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 14:42:15 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:18:08 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	free_and_return(t_stack *a, t_stack *b)
 	stack_free(b);
 }
 
-void	parse_and_fill_stack(int argc, char **argv, t_stack *a,t_bench *bench)
+void	parse_and_fill_stack(int argc, char **argv, t_stack *a, t_bench *bench)
 {
-	int num_start;
+	int	num_start;
 	int	value;
 	int	error;
 	int	i;

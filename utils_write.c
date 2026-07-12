@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 11:30:01 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/11 19:56:34 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:22:02 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_put_float_percent_fd(float n, int fd)
 	int	integer;
 	int	decimal;
 
-	n_int = (int) (n * 10000.0f + 0.5f);
+	n_int = (int)(n * 10000.0f + 0.5f);
 	integer = n_int / 100;
 	decimal = n_int % 100;
 	ft_putnbr_fd(integer, fd);
