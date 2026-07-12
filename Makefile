@@ -24,6 +24,7 @@ SRC = disorder \
 		utils_parsing \
 		utils_push_swap \
 		utils_simple \
+		utils_medium \
 		bench \
 
 SRC_MAIN = main.c

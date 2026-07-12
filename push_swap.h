@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 13:53:27 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 17:59:04 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,14 @@ int		calc_cost(t_stack *a, t_stack *b, t_node *node);
 t_node	*find_cheapest(t_stack *a, t_stack *b);
 void	execute_move(t_stack *a, t_stack *b, t_node *node, t_bench *bench);
 void	push_back_to_a(t_stack *a, t_stack *b, t_bench *bench);
+
+/*utils_medium.c*/
+int		cal_chunk_size(int n);
+int		is_node_in_chunk(t_node *node, int chunk, int chunk_size, int n);
+void	process_chunk(t_stack *a, t_stack *b, t_bench *bench,
+	int chunk, int chunk_size, int n, int el_in_chunk);
+void	push_chunks_to_b(t_stack *a, t_stack *b, t_bench *bench);
+void	push_sorted_to_a(t_stack *a, t_stack *b, t_bench *bench);
 
 /*utils_push_swap.c*/
 void	free_and_return(t_stack *a, t_stack *b);
