@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 19:27:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 22:51:34 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/13 22:39:56 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,12 @@ static void	process_stack(t_stack *a, t_stack *b,
 {
 	parse_and_fill_stack(cmd->argc, cmd->argv, a, bench);
 	if (a->size == 0)
-	{
-		free_and_return(a, b);
 		return ;
-	}
 	if (has_duplicates(a))
 		error_exit(a, b, bench);
 	normalize(a);
 	if (stack_is_sorted(a))
-	{
-		free_and_return(a, b);
 		return ;
-	}
 	bench->disorder = compute_disorder(a);
 	execute_sort(a, b, bench);
 }

@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 13:12:51 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 23:16:58 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/13 22:35:36 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_number(char *str)
 	int	i;
 
 	i = 0;
-	if (!str[i])
+	if (!str)
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
@@ -37,6 +37,8 @@ int	ft_atoi_safe(char *str, int *error)
 	long	num;
 	int		sign;
 
+	if (!str)
+		return (0);
 	num = 0;
 	sign = 1;
 	if (*str == '-' || *str == '+')
