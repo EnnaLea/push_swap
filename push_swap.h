@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/12 23:43:32 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/14 14:47:43 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 # define STRATEGY_MEDIUM	1
 # define STRATEGY_COMPLEX	2
 # define STRATEGY_ADAPTIVE	3
-
-# define DISORDER_LOW       0.2f
-# define DISORDER_MED       0.5f
 
 typedef struct s_node
 {
@@ -166,6 +163,12 @@ int		ft_strcmp(const char *s1, const char *s2);
 int		is_number(char *str);
 int		ft_atoi_safe(char *str, int *error);
 int		has_duplicates(t_stack *s);
+
+/*utils_token*/
+char	*extract_token(char *str, int start, int len);
+int		count_tokens(char *str);
+char	*get_token_at(char *str, int index);
+void	process_token(char *token, t_stack *a, t_bench *bench);
 
 /*utils_simple.c*/
 int		ft_max(int a, int b);

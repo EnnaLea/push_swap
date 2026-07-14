@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 19:27:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/13 22:39:56 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/14 13:07:21 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,13 @@ int	parse_flags(int argc, char **argv, t_bench *bench)
 		else if (ft_strcmp(argv[i], "--adaptive") == 0)
 			bench->strategy = STRATEGY_ADAPTIVE;
 		else
-			error_exit(NULL, NULL, bench);
+		{
+		ft_putstr_fd("DEBUG unrecognized flag: ", 2);
+		ft_putstr_fd(argv[i], 2);
+		ft_putstr_fd("\n", 2);
+		error_exit(NULL, NULL, bench);
+		}
+			//error_exit(NULL, NULL, bench);
 		i++;
 	}
 	return (i);
