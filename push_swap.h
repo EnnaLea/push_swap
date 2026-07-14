@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 14:47:43 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/14 23:45:41 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_bench
 	int		enabled;
 	int		strategy;
 	float	disorder;
+	//live coding
+	//int		count_only;
 	int		total;
 	int		sa;
 	int		sb;

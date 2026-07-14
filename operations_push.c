@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:37:25 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 17:06:42 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/14 23:52:19 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	op_pa(t_stack *a, t_stack *b, t_bench *bench)
 {
 	if (push(b, a))
 	{
+
 		write (1, "pa\n", 3);
 		if (bench && bench->enabled)
 		{
@@ -53,6 +54,7 @@ void	op_pb(t_stack *a, t_stack *b, t_bench *bench)
 {
 	if (push(a, b))
 	{
+
 		write (1, "pb\n", 3);
 		if (bench && bench->enabled)
 		{

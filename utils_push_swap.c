@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 21:59:26 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 16:44:34 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/14 23:47:50 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,7 @@ void	execute_sort(t_stack *a, t_stack *b, t_bench *bench)
 	run_sort(a, b, bench);
 	if (bench->enabled)
 		print_bench(bench);
+	//live coding
+	// else if (bench->count_only)
+	// 	print_bench(bench);
 }
