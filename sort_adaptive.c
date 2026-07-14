@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:46:13 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 12:47:41 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/14 22:53:03 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	handle_small_or_sorted(t_stack *a, t_stack *b, t_bench *bench)
 	return (0);
 }
 
-static float low(int size)
+static	float	low(int size)
 {
 	if (size <= 20)
 		return (1.00f);
@@ -33,10 +33,9 @@ static float low(int size)
 	if (size <= 120)
 		return (0.12f);
 	return (0.07f);
-	
 }
 
-static float high(int size)
+static float	high(int size)
 {
 	if (size <= 20)
 		return (0.00f);
@@ -52,20 +51,19 @@ static float high(int size)
 static void	apply_strategy(t_stack *a, t_stack *b, t_bench *bench,
 		float disorder)
 {
-	int size;
-	float lo;
-	float hi;
+	int		size;
+	float	lo;
+	float	hi;
 
 	size = a->size;
-	
 	bench->disorder = disorder;
 	if (size >= 500)
 	{
 		if (disorder >= 0.99f)
-			return (bench->strategy = STRATEGY_SIMPLE, 
+			return (bench->strategy = STRATEGY_SIMPLE,
 				sort_simple(a, b, bench));
 		if (disorder <= 0.07f)
-			return (bench->strategy = STRATEGY_COMPLEX, 
+			return (bench->strategy = STRATEGY_COMPLEX,
 				sort_complex(a, b, bench));
 		bench->strategy = STRATEGY_COMPLEX;
 		return (sort_complex(a, b, bench));
@@ -77,7 +75,6 @@ static void	apply_strategy(t_stack *a, t_stack *b, t_bench *bench,
 			sort_simple(a, b, bench));
 	bench->strategy = STRATEGY_MEDIUM;
 	sort_medium(a, b, bench);
-	
 }
 
 void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench)
