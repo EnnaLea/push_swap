@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 13:27:38 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 15:05:01 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/14 14:49:03 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char    *extract_token(char *str, int start, int len)
     while (i < len)
     {
         token[i] = str[start + i];
-        i++;       
+        i++;
     }
     token[i] = '\0';
     return (token);

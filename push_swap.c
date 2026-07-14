@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 19:27:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 13:07:21 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/14 17:04:45 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,10 @@ int	parse_flags(int argc, char **argv, t_bench *bench)
 			bench->strategy = STRATEGY_COMPLEX;
 		else if (ft_strcmp(argv[i], "--adaptive") == 0)
 			bench->strategy = STRATEGY_ADAPTIVE;
+		else if (ft_strcmp(argv[i], "--count-only") == 0)
+			bench->strategy = STRATEGY_SIMPLE;
 		else
-		{
-		ft_putstr_fd("DEBUG unrecognized flag: ", 2);
-		ft_putstr_fd(argv[i], 2);
-		ft_putstr_fd("\n", 2);
-		error_exit(NULL, NULL, bench);
-		}
-			//error_exit(NULL, NULL, bench);
+			error_exit(NULL, NULL, bench);
 		i++;
 	}
 	return (i);
@@ -87,7 +83,12 @@ static void	process_stack(t_stack *a, t_stack *b,
 		error_exit(a, b, bench);
 	normalize(a);
 	if (stack_is_sorted(a))
+	{
+		bench->disorder = compute_disorder(a);
+		if (bench->enabled)
+			print_bench(bench);
 		return ;
+	}
 	bench->disorder = compute_disorder(a);
 	execute_sort(a, b, bench);
 }
