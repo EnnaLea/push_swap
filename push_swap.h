@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:54 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 23:45:41 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:03:01 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ typedef struct s_bench
 	int		enabled;
 	int		strategy;
 	float	disorder;
-	//live coding
-	//int		count_only;
 	int		total;
 	int		sa;
 	int		sb;
@@ -171,13 +169,6 @@ char	*extract_token(char *str, int start, int len);
 int		count_tokens(char *str);
 char	*get_token_at(char *str, int index);
 void	process_token(char *token, t_stack *a, t_bench *bench);
-
-/*utils_simple.c*/
-int		ft_max(int a, int b);
-int		calc_cost(t_stack *a, t_stack *b, t_node *node);
-t_node	*find_cheapest(t_stack *a, t_stack *b);
-void	execute_move(t_stack *a, t_stack *b, t_node *node, t_bench *bench);
-void	push_back_to_a(t_stack *a, t_stack *b, t_bench *bench);
 
 /*utils_medium.c*/
 int		cal_chunk_size(int n);

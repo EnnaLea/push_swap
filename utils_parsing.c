@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 13:12:51 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 12:59:08 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/15 13:17:45 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	has_duplicates(t_stack *s)
 	t_node	*curr_node;
 	t_node	*check_node;
 
+	if (!s)
+		return (0);
 	curr_node = s->top;
 	while (curr_node)
 	{

@@ -25,9 +25,12 @@ ARG="4 67 3 87 23"; ./push_swap --adaptive $ARG | ./checker_linux $ARG
 
 ## Resources
 - https://www.geeksforgeeks.org/c/implement-stack-in-c/
+- https://en.wikipedia.org/wiki/Sorting_algorithm
 - https://www.geeksforgeeks.org/dsa/implement-a-stack-using-singly-linked-list/
+- https://en.wikipedia.org/wiki/Square_root_algorithms
+- https://www.growingwiththeweb.com/sorting/radix-sort-lsd/
 
-## Architettura del progetto
+## Project Architecture
 - push_swap.c -> definition, structure, prototype
 - main.c -> parsing, validation, orchestration
 - stack.c -> double linked list and primitive operations
@@ -36,7 +39,7 @@ ARG="4 67 3 87 23"; ./push_swap --adaptive $ARG | ./checker_linux $ARG
 - normalize.c -> normalization of the ranks(alias index of the numbers)
 - disorder.c -> calculating how much the orders of the numbers are messed up
 - sort_simple.c -> minimum cost selection
-- sort_medium.c -> chunk selection
+- sort_medium.c -> chunk selection with square root
 - sort_complex.c -> radix sort LSD
 - sort_adaptive.c -> strategy selection based on disorder
 - cost.c -> calculus of minimum rotations and paralles moves
@@ -116,14 +119,16 @@ The distribution is uniform enough to fill the chunks in a balanced way. Simple 
 `disorder ≥ 0.5` → **Complex O(n·log n)**
 Above 50% inversions, the list is essentially random. Radix sort is the only one that guarantees O(n·log n) regardless of distribution. Simple and medium approaches approach their worst‑case behavior.
 
+
 ## Performance Test
 ```
 Strategia   | n=100 media | n=500 media | target
 ------------|-------------|-------------|--------
-simple      |     XXX     |    XXXXX    |
-medium      |     XXX     |    XXXXX    |
-complex     |     XXX     |    XXXXX    | <700 / <5500
-adaptive    |     XXX     |    XXXXX    | eccellente
+simple      |     1402    |    31951    | 
+medium      |     807     |    8025     |
+complex     |     1084    |    6784     | 
+adaptive    |     807     |    6784     |
+result      |     good    |    good     | <700 / <5500
 ```
 
 ## Error Management
@@ -134,8 +139,40 @@ adaptive    |     XXX     |    XXXXX    | eccellente
 
 All produce `"Error\n"` on stderr and terminate with `exit(1)`.
 
+
+## Bonus 
+The bonus part of the push_swap project consists of creating a checker program that verifies whether a given set of instructions correctly sorts a stack of integers. This utility is essential for validating the output of the main push_swap program and ensuring its correctness.
+
+**Output**
+The checker program displays one of three possible outputs:
+
+    OK: The stack is correctly sorted after executing all instructions
+
+    KO: The stack is not correctly sorted after executing all instructions
+
+    Error: An error occurred during execution (invalid instructions, parsing errors, or invalid arguments)
+
+
+## Task Distribution
+### base code
+
+    operations: ealiman, mcalleja
+### algorithms
+
+    - simple: mcalleja
+    - medium: ealiman
+    - complex: ealiman
+    - adaptive: ealiman
+### bench implementation
+
+    - mcalleja
+### bonus implementation
+
+    - mcalleja
+
+
 ## How AI was used
-During this project, an AI assistant (DeepSeek) was used for the following tasks:
+During this project, an AI assistant (DeepSeek, Claude) was used for the following tasks:
 
 - Code debugging: understanding segmentation faults, memory leaks, and pointer errors.
 - Explaining tricky concepts: function pointers, static keyword, header guards, and Makefile syntax.

@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 19:27:33 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 23:45:52 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:03:07 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	error_exit(t_stack *a, t_stack *b, t_bench *bench)
 {
+	(void)bench;
 	if (a)
 		stack_free(a);
 	if (b)
@@ -39,9 +40,6 @@ int	parse_flags(int argc, char **argv, t_bench *bench)
 			bench->strategy = STRATEGY_COMPLEX;
 		else if (ft_strcmp(argv[i], "--adaptive") == 0)
 			bench->strategy = STRATEGY_ADAPTIVE;
-		//live coding
-		// else if (ft_strcmp(argv[i], "--count-only") == 0)
-		// 	bench->count_only = 1;
 		else
 			error_exit(NULL, NULL, bench);
 		i++;

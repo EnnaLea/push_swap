@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 12:01:49 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 23:52:40 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:04:13 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,13 @@ static void	print_strategy_name(const t_bench *bench)
 	else
 	{
 		ft_putstr_fd("Adaptive / ", 2);
-		if (bench->disorder < 0.20f)
+		if (bench->disorder <= 0.07f)
+			ft_putstr_fd("O(n log n)\n", 2);
+		else if (bench->disorder >= 0.99f)
 			ft_putstr_fd("O(n²)\n", 2);
-		else if (bench->disorder < 0.50f)
+		else if (bench->disorder <= 0.12f || bench->disorder >= 0.90f)
+			ft_putstr_fd("O(n²)\n", 2);
+		else if (bench->disorder <= 0.15f || bench->disorder >= 0.87f)
 			ft_putstr_fd("O(n√n)\n", 2);
 		else
 			ft_putstr_fd("O(n log n)\n", 2);
@@ -90,24 +94,13 @@ void	print_bench(t_bench *bench)
 {
 	if (!bench || !bench->enabled)
 		return ;
-	// {
-	// 	if (bench->count_only)
-	// 	{
-	// 		ft_putnbr_fd(bench->total, 2);
-	// 		write (1, "\n", 1);
-	// 	}
-	// }
-	else
-	{
-		ft_putstr_fd("[bench] disorder:  ", 2);
-		ft_put_float_percent_fd(bench->disorder, 2);
-		ft_putstr_fd("\n", 2);
-		print_strategy_name(bench);
-		ft_putstr_fd("[bench] total_ops: ", 2);
-		ft_putnbr_fd(bench->total, 2);
-		ft_putchar_fd('\n', 2);
-		bench_swaps(bench);
-		bench_rotates(bench);
-	}
-
+	ft_putstr_fd("[bench] disorder:  ", 2);
+	ft_put_float_percent_fd(bench->disorder, 2);
+	ft_putstr_fd("\n", 2);
+	print_strategy_name(bench);
+	ft_putstr_fd("[bench] total_ops: ", 2);
+	ft_putnbr_fd(bench->total, 2);
+	ft_putchar_fd('\n', 2);
+	bench_swaps(bench);
+	bench_rotates(bench);
 }

@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:46:13 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 22:53:03 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/15 08:14:12 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	handle_small_or_sorted(t_stack *a, t_stack *b, t_bench *bench)
 {
+	(void)b;
 	if (stack_is_sorted(a))
 		return (1);
 	if (a->size <= 3)

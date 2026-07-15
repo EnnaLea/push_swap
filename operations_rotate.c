@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 17:46:35 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 23:51:58 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/12 23:30:47 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ void	op_ra(t_stack *a, t_bench *bench)
 {
 	if (rotate(a))
 	{
-		//live coding
-		// if(bench->count_only)
-		// {
-		// 	bench->ra++;
-		// 	bench->total++;
-		// }
 		write (1, "ra\n", 3);
 		if (bench && bench->enabled)
 		{
@@ -55,7 +49,6 @@ void	op_rb(t_stack *b, t_bench *bench)
 {
 	if (rotate(b))
 	{
-
 		write (1, "rb\n", 3);
 		if (bench && bench->enabled)
 		{

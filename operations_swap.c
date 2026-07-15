@@ -6,7 +6,7 @@
 /*   By: ealiman <ealiman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:03:47 by ealiman           #+#    #+#             */
-/*   Updated: 2026/07/14 23:50:27 by ealiman          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:04:36 by ealiman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ void	op_sa(t_stack *a, t_bench *bench)
 {
 	if (swap_stack(a))
 	{
-		//live coding
-		// if(bench->count_only)
-		// 	bench->total++;
 		write (1, "sa\n", 3);
 		if (bench && bench->enabled)
 		{
